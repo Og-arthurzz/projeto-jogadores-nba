@@ -1,51 +1,21 @@
-// Seleciona todos os botões de personagem
-const botoes = document.querySelectorAll(".botao");
-// Seleciona todos os personagens
+
+
+//OBJETIVO 1 - quando clicar no botão do personagem na lista, marcar o botao como selecionado
+//passo 1 - pegar os botões no JS pra poder verificar quando o usuário clicar em cima de um deles
+
+const botoes = document.querySelectorAll('.botao');
 const personagens = document.querySelectorAll(".personagem");
 
-// Adiciona o evento de clique em cada botão
+//passo 2 - adicionar a classe "selecionado" no botão que o usuário clicou
 botoes.forEach((botao, indice) => {
-	botao.addEventListener("click", () => {
-		removerSelecaoBotao();
-		selecionarBotao(botao);
+    botao.addEventListener("click", () => {
+        //passo 3 - verificar se já existe um botão selecionado, se sim, devemos remover a seleção dele
+        const botaoSelecionado = document.querySelector(".botao.selecionado");
+        console.log(botaoSelecionado);
+        botaoSelecionado.classList.remove("selecionado");
 
-		removerSelecaoPersonagem();
-		selecionarPersonagem(indice);
-	});
-});
+        botao.classList.add("selecionado");
 
-/**
- * Remove a classe "selecionado" do botão que está atualmente selecionado
- */
-function removerSelecaoBotao() {
-	const botaoSelecionado = document.querySelector(".botao.selecionado");
-	if (botaoSelecionado) {
-		botaoSelecionado.classList.remove("selecionado");
-	}
-}
-
-/**
- * Adiciona a classe "selecionado" ao botão clicado
- * @param {Element} botao - Botão que foi clicado
- */
-function selecionarBotao(botao) {
-	botao.classList.add("selecionado");
-}
-
-/**
- * Remove a classe "selecionado" do personagem atualmente exibido
- */
-function removerSelecaoPersonagem() {
-	const personagemSelecionado = document.querySelector(".personagem.selecionado");
-	if (personagemSelecionado) {
-		personagemSelecionado.classList.remove("selecionado");
-	}
-}
-
-/**
- * Adiciona a classe "selecionado" ao personagem correspondente ao botão clicado
- * @param {number} indice - Índice do botão clicado, que corresponde ao personagem
- */
-function selecionarPersonagem(indice) {
-	personagens[indice].classList.add("selecionado");
-}
+        const personagemSelecionado = document.querySelector(".personagem.selecionado");
+        personagemSelecionado.classList.remove("selecionado");
+        personagens[indice].classList.add("selecionado");
