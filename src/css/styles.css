@@ -70,7 +70,7 @@ main .personagem .imagem {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    gap: 16px
+    gap: 16px;
 }
 
 .botoes .botao {
